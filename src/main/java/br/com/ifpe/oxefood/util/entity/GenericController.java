@@ -1,6 +1,6 @@
-package be.com.ifpe.oxifood.util.entity;
+package br.com.ifpe.oxefood.util.entity;
 
-import be.com.ifpe.oxifood.util.exception.PreenchimentoException;
+import br.com.ifpe.oxefood.util.entity.exception.PreenchimentoException;
 
 public abstract class GenericController {
  
