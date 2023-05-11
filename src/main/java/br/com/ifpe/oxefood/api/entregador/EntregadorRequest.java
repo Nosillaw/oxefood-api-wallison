@@ -54,6 +54,7 @@ public class EntregadorRequest {
        return Entregador.builder()
        .nome(nome)
        .cpf(cpf)
+       .dataNascimento(dataNascimento)
        .rg(rg)
        .foneCelular(foneCelular)
        .foneFixo(foneFixo)
