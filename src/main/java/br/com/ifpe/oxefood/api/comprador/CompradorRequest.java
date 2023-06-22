@@ -45,7 +45,7 @@ public class CompradorRequest {
                .enderecoComercial(enderecoComercial)
                .enderecoResidencial(enderecoResidencial)
                .comissao(comissao)
-               .trabahoHomeOffice(trabalhoHomeOffice)
+               .trabalhoHomeOffice(trabalhoHomeOffice)
                .qtdComprasMediasMes(qtdComprasMediasMes)
                .contratadoEm(contratadoEm)
                .build();

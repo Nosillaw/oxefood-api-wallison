@@ -12,8 +12,32 @@ import br.com.ifpe.oxefood.util.entity.GenericService;
 @Service
 public class CompradorService extends GenericService {
 
-   @Autowired
+    @Autowired
    private CompradorRepository repository;
+
+    @Transactional
+   public void update(Long id, Comprador compradorAlterado) {
+
+
+
+
+    Comprador comprador = repository.findById(id).get();
+    comprador.setId(compradorAlterado.getId());
+    comprador.setVersao(compradorAlterado.getVersao());
+    comprador.setNome(compradorAlterado.getNome());
+    comprador.setEnderecoComercial(compradorAlterado.getEnderecoComercial());
+    comprador.setEnderecoResidencial(compradorAlterado.getEnderecoResidencial());
+    comprador.setComissao(compradorAlterado.getComissao());
+    comprador.setTrabalhoHomeOffice(compradorAlterado.getTrabalhoHomeOffice());
+    comprador.setQtdComprasMediasMes(compradorAlterado.getQtdComprasMediasMes());
+    comprador.setContratadoEm(compradorAlterado.getContratadoEm());
+        
+      super.preencherCamposAuditoria(comprador);
+      repository.save(comprador);
+  }
+
+
+   
 
    @Transactional
    public Comprador save(Comprador comprador) {
@@ -21,16 +45,24 @@ public class CompradorService extends GenericService {
        super.preencherCamposAuditoria(comprador);
        return repository.save(comprador);
    }
-
-   public List<Comprador> listarTodos() {
+   
+       public List<Comprador> listarTodos() {
   
-    return repository.findAll();
-}
+       return repository.findAll();
+   }
 
-public Comprador obterPorID(Long id) {
+   public Comprador obterPorID(Long id) {
 
-    return repository.findById(id).get();
-}
+       return repository.findById(id).get();
+   }
 
+     @Transactional
+    public void delete(Long id) {
 
+        Comprador comprador = repository.findById(id).get();
+        comprador.setHabilitado(Boolean.FALSE);
+        super.preencherCamposAuditoria(comprador);
+
+        repository.save(comprador);
+    }
 }
